@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification - Course Vita</title>
+    <style>
+        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Main Container Styling */
+        .container {
+            background-color: #fff;
+            width: 90%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.6em;
+            color: #2b8a3e;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 30px;
+        }
+
+        /* Button Styling */
+        .otp-button, .verify-button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .otp-button {
+            background-color: #2b8a3e;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .otp-button:hover {
+            background-color: #217930;
+        }
+
+        .verify-button {
+            background-color: #5A67D8;
+            color: #fff;
+        }
+
+        .verify-button:hover {
+            background-color: #4A53BE;
+        }
+
+        /* Input Styling */
+        .otp-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .otp-input:focus {
+            border-color: #2b8a3e;
+            outline: none;
+        }
+
+        /* Feedback Message Styling */
+        .feedback-message {
+            color: #ff3333;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            display: none;
+        }
+            
+ 
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>OTP Verification</h1>
+        <p>To proceed with payment, please verify your OTP.</p>
+
+        <!-- Send OTP Button -->
+        <!-- <button class="otp-button" onclick="sendOtp()">Send OTP</button> -->
+        <!-- <form action="/api/auth/paymentOtp" method="POST" style="margin-top: 20px; display: flex; justify-content: center;">
+            <input type="hidden" name="email" id="emailOtp" value="">
+            <button type="submit" style="
+              background-color: #007bff;
+              color: white;
+              font-size: 16px;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              transition: background-color 0.3s ease;
+            ">
+              Send OTP
+            </button>
+          </form> -->
+
+          <form action="/api/auth/PaymentOtp" method="POST" style="margin-top: 20px; display: flex; justify-content: center; margin-bottom: 23px;">
+            <input type="hidden" name="email" id="emailOtp" value="">
+            <button type="submit" style="
+              background-color: #205804;
+              color: white;
+              font-size: 16px;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              transition: background-color 0.3s ease;
+            ">
+              Send OTP
+            </button>
+          </form>
+
+
+          
+
+        <!-- OTP Input -->
+        <input type="text" class="otp-input" id="otpInput" placeholder="Enter OTP" maxlength="6" />
+
+        <!-- Verify OTP Button -->
+        <form action="/api/auth/payment" method="POST" style="margin-top: 20px; display: flex; justify-content: center; margin-bottom: 23px;">
+            <input type="hidden" name="email" id="emailOtp" value="">
+            <button type="submit" style="
+              background-color: #044e73;
+              color: white;
+              font-size: 16px;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              transition: background-color 0.3s ease;
+            ">
+              Verify OTP
+            </button>
+        </form>
+
+        <!-- Feedback Message -->
+        <p class="feedback-message" id="feedbackMessage">Please enter the correct OTP to proceed.</p>
+    </div>
+
+    <script>
+        function sendOtp() {
+            alert("OTP has been sent to your registered email or phone.");
+            // Here, add logic to trigger OTP sending from the server
+        }
+
+        function verifyOtp() {
+            const otpInput = document.getElementById("otpInput").value;
+            const feedbackMessage = document.getElementById("feedbackMessage");
+
+            // Placeholder for OTP verification logic
+            if (otpInput === "123456") { // Replace with actual OTP validation logic
+                alert("OTP verified successfully. Redirecting to payment...");
+                window.location.href = "/payment"; // Update with actual payment route
+            } else {
+                feedbackMessage.style.display = "block";
+                feedbackMessage.innerText = "Incorrect OTP. Please try again.";
+            }
+        }
+    </script>
+</body>
+</html>

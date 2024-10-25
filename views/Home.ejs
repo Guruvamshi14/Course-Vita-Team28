@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Vita - Home</title>
+    <style>
+        /* Basic styling for the page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Welcome message styling */
+        .welcome-message {
+            font-size: 1.5em;
+            color: #2b8a3e;
+            margin-bottom: 20px;
+        }
+
+        /* Information text styling */
+        .info-text {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        /* Payment section styling */
+        .payment-section h2 {
+            font-size: 1.4em;
+            color: #2b8a3e;
+            margin-bottom: 10px;
+        }
+
+        .payment-section p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Button styling */
+        .payment-button {
+            padding: 12px 24px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #2b8a3e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .payment-button:hover {
+            background-color: #217930;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Message -->
+        <h1 class="welcome-message">Welcome to Course Vita, <%= user.firstName %>!</h1>
+        <p class="info-text">We're thrilled to have you here. Dive into our courses and unlock new skills on your learning journey!</p>
+
+        <!-- Make a Payment Section -->
+        <div class="payment-section">
+            <h2>Make a Payment</h2>
+            <p>Select your course or service and proceed with payment to start learning right away.</p>
+            <!-- <button class="payment-button" onclick="makePayment()">Proceed to Payment</button> -->
+            <!-- <form action="/api/auth/tryPaymentOtp" method="GET" style="margin-top: 10px;">
+                <input type="hidden" name="email" id="emailOtp" value="">
+                <button type="submit">Proceed to Payment</button>
+              </form> -->
+              <form action="/api/auth/tryPaymentOtp" method="GET" style="margin-top: 20px; display: flex; justify-content: center;">
+                <input type="hidden" name="email" id="emailOtp" value="">
+                <button type="submit" style="
+                  background-color: #205804;
+                  color: white;
+                  font-size: 16px;
+                  padding: 10px 20px;
+                  border: none;
+                  border-radius: 5px;
+                  cursor: pointer;
+                  transition: background-color 0.3s ease;
+                ">
+                  Proceed to Payment
+                </button>
+              </form>
+              
+        </div>
+    </div>
+
+    <!-- <script>
+        function makePayment() {
+            alert("Redirecting to payment gateway...");
+            window.location.href = "/api/auth/tryPaymentOtp"; // Replace with your payment route
+        }
+    </script> -->
+</body>
+</html>
